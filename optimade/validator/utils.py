@@ -374,9 +374,7 @@ def test_case(test_fn: Callable[..., tuple[Any, str]]):
                 summary = f"{display_request} - {test_fn.__name__} - failed with internal error"
                 failure_type = "internal"
             else:
-                summary = (
-                    f"{display_request} - {test_fn.__name__} - failed with error"
-                )
+                summary = f"{display_request} - {test_fn.__name__} - failed with error"
                 failure_type = "optional" if optional else None
 
             validator.results.add_failure(
