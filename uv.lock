@@ -2435,6 +2435,10 @@ name = "monty"
 version = "2026.5.18"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
+    "python_full_version >= '3.15' and sys_platform == 'win32'",
+    "python_full_version >= '3.15' and sys_platform != 'win32'",
+    "python_full_version >= '3.13' and python_full_version < '3.15' and sys_platform == 'win32'",
+    "python_full_version >= '3.13' and python_full_version < '3.15' and sys_platform != 'win32'",
     "python_full_version == '3.12.*' and sys_platform == 'win32'",
     "python_full_version == '3.12.*' and sys_platform != 'win32'",
     "python_full_version == '3.11.*' and sys_platform == 'win32'",
@@ -2700,6 +2704,10 @@ name = "networkx"
 version = "3.6.1"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
+    "python_full_version >= '3.15' and sys_platform == 'win32'",
+    "python_full_version >= '3.15' and sys_platform != 'win32'",
+    "python_full_version >= '3.13' and python_full_version < '3.15' and sys_platform == 'win32'",
+    "python_full_version >= '3.13' and python_full_version < '3.15' and sys_platform != 'win32'",
     "python_full_version == '3.12.*' and sys_platform == 'win32'",
     "python_full_version == '3.12.*' and sys_platform != 'win32'",
     "python_full_version == '3.11.*' and sys_platform == 'win32'",
@@ -2897,13 +2905,13 @@ all = [
     { name = "elasticsearch-dsl" },
     { name = "fastapi" },
     { name = "httpx2" },
-    { name = "jarvis-tools", marker = "python_full_version < '3.13'" },
+    { name = "jarvis-tools" },
     { name = "mongomock" },
     { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "pandas" },
     { name = "pymatgen", version = "2025.10.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "pymatgen", version = "2026.5.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' and python_full_version < '3.13'" },
+    { name = "pymatgen", version = "2026.5.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "pymongo" },
     { name = "rich" },
     { name = "uvicorn", extra = ["standard"] },
@@ -2938,7 +2946,7 @@ http-client = [
     { name = "rich" },
 ]
 jarvis = [
-    { name = "jarvis-tools", marker = "python_full_version < '3.13'" },
+    { name = "jarvis-tools" },
 ]
 mongo = [
     { name = "mongomock" },
@@ -2947,7 +2955,7 @@ mongo = [
 pymatgen = [
     { name = "pandas" },
     { name = "pymatgen", version = "2025.10.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "pymatgen", version = "2026.5.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' and python_full_version < '3.13'" },
+    { name = "pymatgen", version = "2026.5.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
 ]
 server = [
     { name = "fastapi" },
@@ -2989,7 +2997,7 @@ requires-dist = [
     { name = "fastapi", marker = "extra == 'server'", specifier = ">=0.135.0" },
     { name = "griffe", marker = "extra == 'docs'", specifier = ">=1.13,<3.0" },
     { name = "httpx2", marker = "extra == 'http-client'", specifier = "~=2.4" },
-    { name = "jarvis-tools", marker = "python_full_version < '3.13' and extra == 'jarvis'", specifier = ">=2023.1.8,!=2024.4.20,!=2024.4.30" },
+    { name = "jarvis-tools", marker = "extra == 'jarvis'", specifier = ">=2023.1.8" },
     { name = "jsondiff", marker = "extra == 'testing'", specifier = "~=2.0" },
     { name = "lark", specifier = "~=1.1" },
     { name = "mike", marker = "extra == 'docs'", specifier = "~=2.0" },
@@ -3007,7 +3015,7 @@ requires-dist = [
     { name = "pandas", marker = "extra == 'pymatgen'", specifier = "~=2.2" },
     { name = "pydantic", extras = ["email"], specifier = "~=2.2" },
     { name = "pydantic-settings", specifier = "~=2.0" },
-    { name = "pymatgen", marker = "python_full_version < '3.13' and extra == 'pymatgen'", specifier = ">=2022" },
+    { name = "pymatgen", marker = "extra == 'pymatgen'", specifier = ">=2022" },
     { name = "pymongo", marker = "extra == 'mongo'", specifier = "~=4.0" },
     { name = "pytest", marker = "extra == 'testing'", specifier = ">=8.3,<10.0" },
     { name = "pytest-asyncio", marker = "extra == 'testing'", specifier = ">=0.25,<2.0" },
@@ -3258,7 +3266,7 @@ name = "pexpect"
 version = "4.9.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "ptyprocess", marker = "python_full_version >= '3.11' or sys_platform != 'win32'" },
+    { name = "ptyprocess", marker = "sys_platform != 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/42/92/cc564bf6381ff43ce1f4d06852fc19a2f11d180f23dc32d9588bee2f149d/pexpect-4.9.0.tar.gz", hash = "sha256:ee7d41123f3c9911050ea2c2dac107568dc43b2d3b0c7557a33212c398ead30f", size = 166450, upload-time = "2023-11-25T09:07:26.339Z" }
 wheels = [
@@ -3933,6 +3941,10 @@ name = "pymatgen"
 version = "2026.5.4"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
+    "python_full_version >= '3.15' and sys_platform == 'win32'",
+    "python_full_version >= '3.15' and sys_platform != 'win32'",
+    "python_full_version >= '3.13' and python_full_version < '3.15' and sys_platform == 'win32'",
+    "python_full_version >= '3.13' and python_full_version < '3.15' and sys_platform != 'win32'",
     "python_full_version == '3.12.*' and sys_platform == 'win32'",
     "python_full_version == '3.12.*' and sys_platform != 'win32'",
     "python_full_version == '3.11.*' and sys_platform == 'win32'",
@@ -4497,6 +4509,10 @@ name = "scikit-learn"
 version = "1.9.0"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
+    "python_full_version >= '3.15' and sys_platform == 'win32'",
+    "python_full_version >= '3.15' and sys_platform != 'win32'",
+    "python_full_version >= '3.13' and python_full_version < '3.15' and sys_platform == 'win32'",
+    "python_full_version >= '3.13' and python_full_version < '3.15' and sys_platform != 'win32'",
     "python_full_version == '3.12.*' and sys_platform == 'win32'",
     "python_full_version == '3.12.*' and sys_platform != 'win32'",
     "python_full_version == '3.11.*' and sys_platform == 'win32'",
